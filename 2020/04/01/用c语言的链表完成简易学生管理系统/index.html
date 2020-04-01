@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>用c语言的链表完成简易学生管理系统 &middot; 钇小帅</title>
+    <meta name="generator" content="Hugo 0.68.3" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="lzhan">
+    
+      <meta name="description" content="Welcome to a wonderful code world">
+    
+    
+    <link rel="canonical" href="http://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+    <link rel="icon" href="http://lzhan0121.github.io/favicon.ico">
+    <link rel="apple-touch-icon" href="http://lzhan0121.github.io/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="http://lzhan0121.github.io/css/style.css">
+    <link rel="stylesheet" href="http://lzhan0121.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://lzhan0121.github.io/css/monokai.css">
+    <link rel="stylesheet" href="http://lzhan0121.github.io/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="用c语言的链表完成简易学生管理系统" />
+<meta property="og:description" content="学生管理系统  使用c语言动态链表部分的知识，通过不断改变结点的方式，实现简易链表的增删改查。  #include&lt;stdio.h&gt;#include&lt;stdlib.h&gt;#include&lt;malloc.h&gt; #define LEN sizeof(struct Student)  struct Student //定义结构体 { long long num; float score; struct Student *next; }; int n; struct Student *creat(void) //建立链表的函数 { struct Student *head; struct Student *p1, *p2; n = 0; p1 = p2 = (struct Student *)malloc(LEN); //开辟一个新单元  printf(&#34;请输入学生的学号 : &#34;); //输入第一个学生的学号和成绩  scanf(&#34;%lld&#34;,&amp;p1-&gt;num); printf(&#34;请输入该学生的成绩: &#34;); scanf(&#34;%f&#34;,&amp;p1 -&gt; score); head = NULL; while(p1-&gt;num!= 0) { n = n&#43;1; if(n==1)head = p1; else p2-&gt;next = p1; p2 = p1; p1 = (struct Student *)malloc(LEN); //开辟动态存储区，把起始地址赋给p1  printf(&#34;\n请输入学生的学号 : &#34;); //输入其他学生的学号和成绩  scanf(&#34;%lld&#34;,&amp;p1-&gt;num); if(p1 -&gt; num == 0) { system(&#34;cls&#34;); printf(&#34;\t\t\t\t\t\t录入结束！\n\n\n&#34;); printf(&#34;\t\t\t\t----------------欢迎回到学生管理系统----------------&#34;); printf(&#34;\n输入1新建信息\n输入2删除信息\n输入3增加信息\n输入0退出系统\n&#34;); break; } printf(&#34;请输入该学生的成绩: &#34;); scanf(&#34;%f&#34;,&amp;p1 -&gt; score); } p2-&gt;next = NULL; return(head); } void print(struct Student *head) //输出链表的函数 { int i=1; struct Student *p; printf(&#34;\n现在, 系统拥有 %d 条记录: \n&#34;,n); p = head; if(head !" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" />
+<meta property="article:published_time" content="2020-04-01T13:00:04+08:00" />
+<meta property="article:modified_time" content="2020-04-01T13:00:04+08:00" />
+
+    
+    <meta itemprop="name" content="用c语言的链表完成简易学生管理系统">
+<meta itemprop="description" content="学生管理系统  使用c语言动态链表部分的知识，通过不断改变结点的方式，实现简易链表的增删改查。  #include&lt;stdio.h&gt;#include&lt;stdlib.h&gt;#include&lt;malloc.h&gt; #define LEN sizeof(struct Student)  struct Student //定义结构体 { long long num; float score; struct Student *next; }; int n; struct Student *creat(void) //建立链表的函数 { struct Student *head; struct Student *p1, *p2; n = 0; p1 = p2 = (struct Student *)malloc(LEN); //开辟一个新单元  printf(&#34;请输入学生的学号 : &#34;); //输入第一个学生的学号和成绩  scanf(&#34;%lld&#34;,&amp;p1-&gt;num); printf(&#34;请输入该学生的成绩: &#34;); scanf(&#34;%f&#34;,&amp;p1 -&gt; score); head = NULL; while(p1-&gt;num!= 0) { n = n&#43;1; if(n==1)head = p1; else p2-&gt;next = p1; p2 = p1; p1 = (struct Student *)malloc(LEN); //开辟动态存储区，把起始地址赋给p1  printf(&#34;\n请输入学生的学号 : &#34;); //输入其他学生的学号和成绩  scanf(&#34;%lld&#34;,&amp;p1-&gt;num); if(p1 -&gt; num == 0) { system(&#34;cls&#34;); printf(&#34;\t\t\t\t\t\t录入结束！\n\n\n&#34;); printf(&#34;\t\t\t\t----------------欢迎回到学生管理系统----------------&#34;); printf(&#34;\n输入1新建信息\n输入2删除信息\n输入3增加信息\n输入0退出系统\n&#34;); break; } printf(&#34;请输入该学生的成绩: &#34;); scanf(&#34;%f&#34;,&amp;p1 -&gt; score); } p2-&gt;next = NULL; return(head); } void print(struct Student *head) //输出链表的函数 { int i=1; struct Student *p; printf(&#34;\n现在, 系统拥有 %d 条记录: \n&#34;,n); p = head; if(head !">
+<meta itemprop="datePublished" content="2020-04-01T13:00:04&#43;08:00" />
+<meta itemprop="dateModified" content="2020-04-01T13:00:04&#43;08:00" />
+<meta itemprop="wordCount" content="415">
+
+
+
+<meta itemprop="keywords" content="" />
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="用c语言的链表完成简易学生管理系统"/>
+<meta name="twitter:description" content="学生管理系统  使用c语言动态链表部分的知识，通过不断改变结点的方式，实现简易链表的增删改查。  #include&lt;stdio.h&gt;#include&lt;stdlib.h&gt;#include&lt;malloc.h&gt; #define LEN sizeof(struct Student)  struct Student //定义结构体 { long long num; float score; struct Student *next; }; int n; struct Student *creat(void) //建立链表的函数 { struct Student *head; struct Student *p1, *p2; n = 0; p1 = p2 = (struct Student *)malloc(LEN); //开辟一个新单元  printf(&#34;请输入学生的学号 : &#34;); //输入第一个学生的学号和成绩  scanf(&#34;%lld&#34;,&amp;p1-&gt;num); printf(&#34;请输入该学生的成绩: &#34;); scanf(&#34;%f&#34;,&amp;p1 -&gt; score); head = NULL; while(p1-&gt;num!= 0) { n = n&#43;1; if(n==1)head = p1; else p2-&gt;next = p1; p2 = p1; p1 = (struct Student *)malloc(LEN); //开辟动态存储区，把起始地址赋给p1  printf(&#34;\n请输入学生的学号 : &#34;); //输入其他学生的学号和成绩  scanf(&#34;%lld&#34;,&amp;p1-&gt;num); if(p1 -&gt; num == 0) { system(&#34;cls&#34;); printf(&#34;\t\t\t\t\t\t录入结束！\n\n\n&#34;); printf(&#34;\t\t\t\t----------------欢迎回到学生管理系统----------------&#34;); printf(&#34;\n输入1新建信息\n输入2删除信息\n输入3增加信息\n输入0退出系统\n&#34;); break; } printf(&#34;请输入该学生的成绩: &#34;); scanf(&#34;%f&#34;,&amp;p1 -&gt; score); } p2-&gt;next = NULL; return(head); } void print(struct Student *head) //输出链表的函数 { int i=1; struct Student *p; printf(&#34;\n现在, 系统拥有 %d 条记录: \n&#34;,n); p = head; if(head !"/>
+<meta name="twitter:site" content="@spf13"/>
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="http://lzhan0121.github.io/" id="logo">
+          
+          <i class="logo" style="background-image: url('http://lzhan0121.github.io/css/images/2.jpg')"></i>
+          
+          <span class="site-title">钇小帅</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="http://lzhan0121.github.io/">首页</a>
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="http://lzhan0121.github.io/tags/">标签</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://lzhan0121.github.io/categories/">分类</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://lzhan0121.github.io/css/images/1.jpg"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="搜索">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="http://lzhan0121.github.io/" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="http://lzhan0121.github.io/">首页</a></td>
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="http://lzhan0121.github.io/tags/">标签</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://lzhan0121.github.io/categories/">分类</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="http://lzhan0121.github.io/" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   	
+    	<aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      
+      <img id="avatar" src="https://www.gravatar.com/avatar/4fca794da0cf08804f99048d3c8b39c1?s=100&d=identicon"/>
+      
+      <h2 id="name">lzhan</h2>
+      <h3 id="title">Code world</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Earth-1</span>
+      
+          <a id="follow" href="https://github.com/lzhan0121/">
+              欢迎来到我的代码世界
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        1
+        <span>帖子</span>
+      </div>
+      <div class="article-info-block">
+        
+          0
+        
+        <span>
+            标签
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/lzhan0121" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/spf13" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="http://lzhan0121.github.io/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+    
+
+    <section id="main">
+    
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+
+        <header class="article-header">
+    <a href="http://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+    <h1 class="article-title" itemprop="name">
+        用c语言的链表完成简易学生管理系统
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2020-04-01 13:00:04 &#43;0800 CST" itemprop="datePublished">2020-04-01</time>
+            &middot;
+            415
+            话语
+            &middot;
+            2
+            分钟阅读
+        </div>
+        
+        
+
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="学生管理系统">学生管理系统</h2>
+<ul>
+<li>使用c语言动态链表部分的知识，通过不断改变结点的方式，实现简易链表的增删改查。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;malloc.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#define LEN sizeof(struct Student)
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">struct</span> Student                                                           <span style="color:#75715e">//定义结构体
+</span><span style="color:#75715e"></span>{
+    <span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span>  num;
+    <span style="color:#66d9ef">float</span> score;
+    <span style="color:#66d9ef">struct</span> Student <span style="color:#f92672">*</span>next;
+};
+<span style="color:#66d9ef">int</span> n;
+
+<span style="color:#66d9ef">struct</span> Student <span style="color:#f92672">*</span><span style="color:#a6e22e">creat</span>(<span style="color:#66d9ef">void</span>)                                             <span style="color:#75715e">//建立链表的函数
+</span><span style="color:#75715e"></span>{
+    <span style="color:#66d9ef">struct</span> Student <span style="color:#f92672">*</span>head;
+    <span style="color:#66d9ef">struct</span> Student <span style="color:#f92672">*</span>p1, <span style="color:#f92672">*</span>p2;
+    n <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    p1 <span style="color:#f92672">=</span> p2 <span style="color:#f92672">=</span> (<span style="color:#66d9ef">struct</span> Student <span style="color:#f92672">*</span>)malloc(LEN);                <span style="color:#75715e">//开辟一个新单元
+</span><span style="color:#75715e"></span>              
+    printf(<span style="color:#e6db74">&#34;请输入学生的学号 : &#34;</span>);                 <span style="color:#75715e">//输入第一个学生的学号和成绩
+</span><span style="color:#75715e"></span>    scanf(<span style="color:#e6db74">&#34;%lld&#34;</span>,<span style="color:#f92672">&amp;</span>p1<span style="color:#f92672">-&gt;</span>num);
+    printf(<span style="color:#e6db74">&#34;请输入该学生的成绩: &#34;</span>);
+    scanf(<span style="color:#e6db74">&#34;%f&#34;</span>,<span style="color:#f92672">&amp;</span>p1 <span style="color:#f92672">-&gt;</span> score);
+   
+    head <span style="color:#f92672">=</span> NULL;
+    <span style="color:#66d9ef">while</span>(p1<span style="color:#f92672">-&gt;</span>num<span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>)
+    {
+        n <span style="color:#f92672">=</span> n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
+        <span style="color:#66d9ef">if</span>(n<span style="color:#f92672">==</span><span style="color:#ae81ff">1</span>)head <span style="color:#f92672">=</span> p1;
+        <span style="color:#66d9ef">else</span> p2<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> p1;
+        p2 <span style="color:#f92672">=</span> p1;
+        p1 <span style="color:#f92672">=</span> (<span style="color:#66d9ef">struct</span> Student <span style="color:#f92672">*</span>)malloc(LEN);         <span style="color:#75715e">//开辟动态存储区，把起始地址赋给p1
+</span><span style="color:#75715e"></span>        printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">请输入学生的学号 : &#34;</span>);            <span style="color:#75715e">//输入其他学生的学号和成绩
+</span><span style="color:#75715e"></span>        scanf(<span style="color:#e6db74">&#34;%lld&#34;</span>,<span style="color:#f92672">&amp;</span>p1<span style="color:#f92672">-&gt;</span>num);
+        <span style="color:#66d9ef">if</span>(p1 <span style="color:#f92672">-&gt;</span> num <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+        {
+            system(<span style="color:#e6db74">&#34;cls&#34;</span>);
+            printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t\t\t\t\t\t</span><span style="color:#e6db74">录入结束！</span><span style="color:#ae81ff">\n\n\n</span><span style="color:#e6db74">&#34;</span>);
+            printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t\t\t\t</span><span style="color:#e6db74">----------------欢迎回到学生管理系统----------------&#34;</span>);
+            printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">输入1新建信息</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">输入2删除信息</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">输入3增加信息</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">输入0退出系统</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+            <span style="color:#66d9ef">break</span>;
+        }
+        printf(<span style="color:#e6db74">&#34;请输入该学生的成绩: &#34;</span>);
+        scanf(<span style="color:#e6db74">&#34;%f&#34;</span>,<span style="color:#f92672">&amp;</span>p1 <span style="color:#f92672">-&gt;</span> score);
+    }
+    p2<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> NULL;
+    <span style="color:#66d9ef">return</span>(head);
+}
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print</span>(<span style="color:#66d9ef">struct</span> Student <span style="color:#f92672">*</span>head)                                         <span style="color:#75715e">//输出链表的函数
+</span><span style="color:#75715e"></span>{
+    <span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">struct</span> Student <span style="color:#f92672">*</span>p;
+    printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">现在, 系统拥有 %d 条记录: </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,n);
+    p <span style="color:#f92672">=</span> head;
+    <span style="color:#66d9ef">if</span>(head <span style="color:#f92672">!=</span> NULL)
+    <span style="color:#66d9ef">do</span>
+    {
+        printf(<span style="color:#e6db74">&#34;学生%d：学号%lld 成绩：%5.1f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, i, p<span style="color:#f92672">-&gt;</span>num,p<span style="color:#f92672">-&gt;</span>score);
+        p<span style="color:#f92672">=</span>p<span style="color:#f92672">-&gt;</span>next;
+        i<span style="color:#f92672">++</span>;
+    }<span style="color:#66d9ef">while</span>(p<span style="color:#f92672">!=</span>NULL);
+}
+<span style="color:#66d9ef">struct</span> Student <span style="color:#f92672">*</span><span style="color:#a6e22e">del</span>(<span style="color:#66d9ef">struct</span> Student <span style="color:#f92672">*</span>head, <span style="color:#66d9ef">int</span> num)                      <span style="color:#75715e">//删除链表的函数
+</span><span style="color:#75715e"></span>{
+    <span style="color:#66d9ef">struct</span> Student <span style="color:#f92672">*</span>p1, <span style="color:#f92672">*</span>p2;
+    <span style="color:#66d9ef">if</span>(head <span style="color:#f92672">==</span> NULL)
+    {
+        printf(<span style="color:#e6db74">&#34;error! &#34;</span>);
+        <span style="color:#66d9ef">goto</span> END;
+    }
+
+    p1 <span style="color:#f92672">=</span> head;
+    <span style="color:#66d9ef">while</span>(p1<span style="color:#f92672">-&gt;</span>num <span style="color:#f92672">!=</span> num <span style="color:#f92672">&amp;&amp;</span> p1<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">!=</span> NULL)
+    {
+        p2 <span style="color:#f92672">=</span> p1;
+        p1 <span style="color:#f92672">=</span> p1<span style="color:#f92672">-&gt;</span>next;
+    }
+    <span style="color:#66d9ef">if</span>(num <span style="color:#f92672">==</span> p1 <span style="color:#f92672">-&gt;</span> num)
+    {
+        <span style="color:#66d9ef">if</span>(p1 <span style="color:#f92672">==</span> head)                                      <span style="color:#75715e">//当将要删除的结点位于头结点的时候
+</span><span style="color:#75715e"></span>        {
+            head <span style="color:#f92672">=</span> p1 <span style="color:#f92672">-&gt;</span> next;
+        }
+        <span style="color:#66d9ef">else</span>                                                         <span style="color:#75715e">//一般情况
+</span><span style="color:#75715e"></span>        {
+            p2 <span style="color:#f92672">-&gt;</span> next <span style="color:#f92672">=</span> p1 <span style="color:#f92672">-&gt;</span> next;
+        }
+        printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">学号为 %lld 的学生数据删除成功</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,num);
+        n <span style="color:#f92672">=</span> n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;                                            <span style="color:#75715e">//n作为全局变量，用来记录链表的数据数
+</span><span style="color:#75715e"></span>    }
+    <span style="color:#66d9ef">else</span>
+    {
+        printf(<span style="color:#e6db74">&#34;%d not been found</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,n);
+    }
+    END:
+        <span style="color:#66d9ef">return</span> head;
+}
+<span style="color:#66d9ef">struct</span> Student <span style="color:#f92672">*</span><span style="color:#a6e22e">insert</span>(<span style="color:#66d9ef">struct</span> Student <span style="color:#f92672">*</span>head, <span style="color:#66d9ef">struct</span> Student <span style="color:#f92672">*</span>stu)       <span style="color:#75715e">//插入链表的函数
+</span><span style="color:#75715e"></span>{
+    <span style="color:#66d9ef">struct</span> Student <span style="color:#f92672">*</span>p0, <span style="color:#f92672">*</span>p1, <span style="color:#f92672">*</span>p2;
+    p1 <span style="color:#f92672">=</span> head;
+    p0 <span style="color:#f92672">=</span> stu;
+    <span style="color:#66d9ef">if</span>(head <span style="color:#f92672">==</span> NULL)
+    {
+        head <span style="color:#f92672">=</span> p0;
+        p0 <span style="color:#f92672">-&gt;</span> next <span style="color:#f92672">=</span> NULL;
+    }
+    <span style="color:#66d9ef">else</span>
+    {
+        <span style="color:#66d9ef">while</span>(p0 <span style="color:#f92672">-&gt;</span> num <span style="color:#f92672">&gt;</span> p1 <span style="color:#f92672">-&gt;</span> num <span style="color:#f92672">&amp;&amp;</span> p1 <span style="color:#f92672">-&gt;</span> next <span style="color:#f92672">!=</span> NULL)
+        {
+            p2 <span style="color:#f92672">=</span> p1;
+            p1 <span style="color:#f92672">=</span> p1 <span style="color:#f92672">-&gt;</span> next;
+        }
+        <span style="color:#66d9ef">if</span>(p0 <span style="color:#f92672">-&gt;</span> num <span style="color:#f92672">&lt;=</span> p1 <span style="color:#f92672">-&gt;</span> num)
+        {
+            <span style="color:#66d9ef">if</span>(head <span style="color:#f92672">==</span> p1)
+            {
+                head <span style="color:#f92672">=</span> p0;
+            }
+            <span style="color:#66d9ef">else</span>
+            {
+                p2 <span style="color:#f92672">-&gt;</span> next <span style="color:#f92672">=</span> p0;
+            }
+            p0 <span style="color:#f92672">-&gt;</span> next <span style="color:#f92672">=</span> p1;
+        }
+        <span style="color:#66d9ef">else</span>                            <span style="color:#75715e">//p0的num最大，插入到末尾
+</span><span style="color:#75715e"></span>        {
+            p1 <span style="color:#f92672">-&gt;</span> next <span style="color:#f92672">=</span> p0;
+            p0 <span style="color:#f92672">-&gt;</span> next <span style="color:#f92672">=</span> NULL;
+        }
+    }
+    n <span style="color:#f92672">=</span> n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;                         <span style="color:#75715e">//由于插入了，增加一位成员到链表中
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">return</span> head;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    <span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> n;
+    <span style="color:#66d9ef">struct</span> Student <span style="color:#f92672">*</span>head, <span style="color:#f92672">*</span>p, stu;
+    <span style="color:#66d9ef">int</span> choice;
+
+    printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t\t\t\t</span><span style="color:#e6db74">----------------欢迎进入学生管理系统----------------&#34;</span>);
+    printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">输入1新建档案（输入学号时按0结束新建）</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">输入2删除信息</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">输入3增加信息</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">输入0退出系统</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    <span style="color:#66d9ef">while</span>(i)
+    {
+        printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">请输入数字来操作： &#34;</span>);
+        scanf(<span style="color:#e6db74">&#34;%d&#34;</span>,<span style="color:#f92672">&amp;</span>choice);
+        <span style="color:#66d9ef">while</span>(<span style="color:#ae81ff">1</span>)
+        {
+            <span style="color:#66d9ef">if</span>(choice <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>)
+            {
+                printf(<span style="color:#e6db74">&#34;输入错误！请重新输入： &#34;</span>);
+                scanf(<span style="color:#e6db74">&#34;%d&#34;</span>,<span style="color:#f92672">&amp;</span>choice);
+            }
+            <span style="color:#66d9ef">else</span>
+            {
+                <span style="color:#66d9ef">break</span>;
+            }
+            
+        }
+        <span style="color:#66d9ef">switch</span>(choice)                                                           <span style="color:#75715e">//利用switch选择功能
+</span><span style="color:#75715e"></span>        {
+            <span style="color:#66d9ef">case</span>(<span style="color:#ae81ff">0</span>)<span style="color:#f92672">:</span>
+                system(<span style="color:#e6db74">&#34;cls&#34;</span>);
+                printf(<span style="color:#e6db74">&#34;再见！</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+                i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+                <span style="color:#66d9ef">break</span>;
+            <span style="color:#66d9ef">case</span>(<span style="color:#ae81ff">1</span>)<span style="color:#f92672">:</span>
+                printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">*********开始新建档案**********</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+                head <span style="color:#f92672">=</span> creat();                                                  <span style="color:#75715e">//调用creat函数，返回第一个结点的起始地址
+</span><span style="color:#75715e"></span>                p <span style="color:#f92672">=</span> head;              
+                print(head);
+                <span style="color:#66d9ef">break</span>;                                                      <span style="color:#75715e">//调用print函数，输出链表
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">case</span>(<span style="color:#ae81ff">2</span>)<span style="color:#f92672">:</span>
+                printf(<span style="color:#e6db74">&#34;请选择要删除的学生学号: &#34;</span>);
+                scanf(<span style="color:#e6db74">&#34;%lld&#34;</span>,<span style="color:#f92672">&amp;</span>n);
+                print(del(p,n));
+                <span style="color:#66d9ef">break</span>;
+            <span style="color:#66d9ef">case</span>(<span style="color:#ae81ff">3</span>)<span style="color:#f92672">:</span>
+                printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">请输入需要添加的学生的学号: &#34;</span>);
+                scanf(<span style="color:#e6db74">&#34;%lld&#34;</span>,<span style="color:#f92672">&amp;</span>stu.num);
+                printf(<span style="color:#e6db74">&#34;请输入需要添加的学生的分数: &#34;</span>);
+                scanf(<span style="color:#e6db74">&#34;%f&#34;</span>,<span style="color:#f92672">&amp;</span>stu.score);
+                print(insert(head,<span style="color:#f92672">&amp;</span>stu));
+                <span style="color:#66d9ef">break</span>;
+        }
+    }
+    system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+}
+
+
+<span style="color:#f92672">!</span>[](<span style="color:#f92672">/</span>images<span style="color:#f92672">/</span><span style="color:#960050;background-color:#1e0010">效果</span><span style="color:#ae81ff">1.</span>png)</code></pre></div>
+        </div>
+        <footer class="article-footer">
+    <a data-url="http://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" data-id="7b270c2166c8af3a49992e37bfb1a688" class="article-share-link">
+        <i class="fa fa-share"></i>
+        分享
+    </a>
+    
+    <a href="http://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/#disqus_thread" class="article-comment-link">
+        评论
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+
+    
+
+</article>
+
+
+<section id="comments">
+    <div id="disqus_thread">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "spf13" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+</section>
+
+
+    </section>
+
+   	
+    	<aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        最近的
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    <p class="item-title"><a href="http://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" class="title">用c语言的链表完成简易学生管理系统</a></p>
+                    <p class="item-date">
+                        <time datetime="2020-04-01 13:00:04 &#43;0800 CST" itemprop="datePublished">2020-04-01</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://lzhan0121.github.io/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://lzhan0121.github.io/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+</body>
+</html>
