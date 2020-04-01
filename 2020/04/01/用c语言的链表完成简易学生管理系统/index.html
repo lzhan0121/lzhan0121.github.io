@@ -10,20 +10,20 @@
       <meta name="description" content="Welcome to a wonderful code world">
     
     
-    <link rel="canonical" href="https://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
-    <link rel="icon" href="https://lzhan0121.github.io/favicon.ico">
-    <link rel="apple-touch-icon" href="https://lzhan0121.github.io/apple-touch-icon.png"/>
-    <link rel="stylesheet" href="https://lzhan0121.github.io/css/style.css">
-    <link rel="stylesheet" href="https://lzhan0121.github.io/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://lzhan0121.github.io/css/monokai.css">
-    <link rel="stylesheet" href="https://lzhan0121.github.io/fancybox/jquery.fancybox.css">
+    <link rel="canonical" href="http://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+    <link rel="icon" href="http://lzhan0121.github.io/favicon.ico">
+    <link rel="apple-touch-icon" href="http://lzhan0121.github.io/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="http://lzhan0121.github.io/css/style.css">
+    <link rel="stylesheet" href="http://lzhan0121.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://lzhan0121.github.io/css/monokai.css">
+    <link rel="stylesheet" href="http://lzhan0121.github.io/fancybox/jquery.fancybox.css">
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
     <meta property="og:title" content="用c语言的链表完成简易学生管理系统" />
 <meta property="og:description" content="学生管理系统  使用c语言动态链表部分的知识，通过不断改变结点的方式，实现简易链表的增删改查。  #include&lt;stdio.h&gt;#include&lt;stdlib.h&gt;#include&lt;malloc.h&gt; #define LEN sizeof(struct Student)  struct Student //定义结构体 { long long num; float score; struct Student *next; }; int n; struct Student *creat(void) //建立链表的函数 { struct Student *head; struct Student *p1, *p2; n = 0; p1 = p2 = (struct Student *)malloc(LEN); //开辟一个新单元  printf(&#34;请输入学生的学号 : &#34;); //输入第一个学生的学号和成绩  scanf(&#34;%lld&#34;,&amp;p1-&gt;num); printf(&#34;请输入该学生的成绩: &#34;); scanf(&#34;%f&#34;,&amp;p1 -&gt; score); head = NULL; while(p1-&gt;num!= 0) { n = n&#43;1; if(n==1)head = p1; else p2-&gt;next = p1; p2 = p1; p1 = (struct Student *)malloc(LEN); //开辟动态存储区，把起始地址赋给p1  printf(&#34;\n请输入学生的学号 : &#34;); //输入其他学生的学号和成绩  scanf(&#34;%lld&#34;,&amp;p1-&gt;num); if(p1 -&gt; num == 0) { system(&#34;cls&#34;); printf(&#34;\t\t\t\t\t\t录入结束！\n\n\n&#34;); printf(&#34;\t\t\t\t----------------欢迎回到学生管理系统----------------&#34;); printf(&#34;\n输入1新建信息\n输入2删除信息\n输入3增加信息\n输入0退出系统\n&#34;); break; } printf(&#34;请输入该学生的成绩: &#34;); scanf(&#34;%f&#34;,&amp;p1 -&gt; score); } p2-&gt;next = NULL; return(head); } void print(struct Student *head) //输出链表的函数 { int i=1; struct Student *p; printf(&#34;\n现在, 系统拥有 %d 条记录: \n&#34;,n); p = head; if(head !" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" />
+<meta property="og:url" content="http://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" />
 <meta property="article:published_time" content="2020-04-01T13:00:04+08:00" />
 <meta property="article:modified_time" content="2020-04-01T13:00:04+08:00" />
 
@@ -57,16 +57,16 @@
 	<header id="header">
   <div id="header-main" class="header-inner">
     <div class="outer">
-      <a href="https://lzhan0121.github.io/" id="logo">
+      <a href="http://lzhan0121.github.io/" id="logo">
           
-          <i class="logo" style="background-image: url('https://lzhan0121.github.io/css/images/2.jpg')"></i>
+          <i class="logo" style="background-image: url('http://lzhan0121.github.io/css/images/2.jpg')"></i>
           
           <span class="site-title">钇小帅</span>
       </a>
       <nav id="main-nav">
           
           
-          <a class="main-nav-link" href="https://lzhan0121.github.io/">首页</a>
+          <a class="main-nav-link" href="http://lzhan0121.github.io/">首页</a>
           
           
           
@@ -80,17 +80,17 @@
           
           
           
-          <a class="main-nav-link" href="https://lzhan0121.github.io/tags/">标签</a>
+          <a class="main-nav-link" href="http://lzhan0121.github.io/tags/">标签</a>
           
           
           
-          <a class="main-nav-link" href="https://lzhan0121.github.io/categories/">分类</a>
+          <a class="main-nav-link" href="http://lzhan0121.github.io/categories/">分类</a>
           
           
       </nav>
         <nav id="sub-nav">
           <div class="profile" id="profile-nav">
-            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="https://lzhan0121.github.io/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://lzhan0121.github.io/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
           </div>
         </nav>
         <div id="search-form-wrap">
@@ -98,7 +98,7 @@
               <input type="search" name="q" class="search-form-input" placeholder="搜索">
               <button type="submit" class="search-form-submit">
               </button>
-              <input type="hidden" name="sitesearch" value="https://lzhan0121.github.io/" />
+              <input type="hidden" name="sitesearch" value="http://lzhan0121.github.io/" />
          </form>
         </div>
     </div>
@@ -109,7 +109,7 @@
           <tr>
           
           
-          <td><a class="main-nav-link" href="https://lzhan0121.github.io/">首页</a></td>
+          <td><a class="main-nav-link" href="http://lzhan0121.github.io/">首页</a></td>
           
           
           
@@ -123,17 +123,17 @@
           
           
           
-          <td><a class="main-nav-link" href="https://lzhan0121.github.io/tags/">标签</a></td>
+          <td><a class="main-nav-link" href="http://lzhan0121.github.io/tags/">标签</a></td>
           
           
           
-          <td><a class="main-nav-link" href="https://lzhan0121.github.io/categories/">分类</a></td>
+          <td><a class="main-nav-link" href="http://lzhan0121.github.io/categories/">分类</a></td>
           
           
           <td>
           <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
           <input type="search" name="q" class="search-form-input" placeholder="Search">
-          <input type="hidden" name="sitesearch" value="https://lzhan0121.github.io/" />
+          <input type="hidden" name="sitesearch" value="http://lzhan0121.github.io/" />
           </form>
         </td>
       </tr>
@@ -233,7 +233,7 @@
 <td><a href="//twitter.com/spf13" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
 
 
-          <td><a href="https://lzhan0121.github.io/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+          <td><a href="http://lzhan0121.github.io/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
         </tr>
       </table>
     </div>
@@ -249,7 +249,7 @@
         
 
         <header class="article-header">
-    <a href="https://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+    <a href="http://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
     <h1 class="article-title" itemprop="name">
         用c语言的链表完成简易学生管理系统
     </h1>
@@ -477,12 +477,12 @@
 
         </div>
         <footer class="article-footer">
-    <a data-url="https://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" data-id="7b270c2166c8af3a49992e37bfb1a688" class="article-share-link">
+    <a data-url="http://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" data-id="7b270c2166c8af3a49992e37bfb1a688" class="article-share-link">
         <i class="fa fa-share"></i>
         分享
     </a>
     
-    <a href="https://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/#disqus_thread" class="article-comment-link">
+    <a href="http://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/#disqus_thread" class="article-comment-link">
         评论
     </a>
     
@@ -600,7 +600,7 @@
             
             <li>
                 <div class="item-thumbnail">
-                    <a href="https://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" class="thumbnail">
+                    <a href="http://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" class="thumbnail">
                     
                         <span class="thumbnail-image thumbnail-none"></span>
                     
@@ -608,7 +608,7 @@
                 </div>
                 <div class="item-inner">
                     
-                    <p class="item-title"><a href="https://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" class="title">用c语言的链表完成简易学生管理系统</a></p>
+                    <p class="item-title"><a href="http://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" class="title">用c语言的链表完成简易学生管理系统</a></p>
                     <p class="item-date">
                         <time datetime="2020-04-01 13:00:04 &#43;0800 CST" itemprop="datePublished">2020-04-01</time>
                     </p>
@@ -656,8 +656,8 @@
 </footer>
 
 
-<script src="https://lzhan0121.github.io/fancybox/jquery.fancybox.pack.js"></script>
-<script src="https://lzhan0121.github.io/js/script.js"></script>
+<script src="http://lzhan0121.github.io/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://lzhan0121.github.io/js/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
 
 
