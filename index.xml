@@ -2,40 +2,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>钇小帅</title>
-    <link>https://lzhan0121.github.io/</link>
+    <link>http://lzhan0121.github.io/</link>
     <description>Recent content on 钇小帅</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Tue, 31 Mar 2020 19:12:17 +0800</lastBuildDate>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 20 Apr 2019 23:10:44 +0800</lastBuildDate>
     
-	<atom:link href="https://lzhan0121.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://lzhan0121.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>C语言投票系统</title>
-      <link>https://lzhan0121.github.io/2020/04/02/c%E8%AF%AD%E8%A8%80%E6%8A%95%E7%A5%A8%E7%B3%BB%E7%BB%9F/</link>
+      <link>http://lzhan0121.github.io/2020/04/02/C%E8%AF%AD%E8%A8%80%E6%8A%95%E7%A5%A8%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Thu, 02 Apr 2020 16:37:33 +0800</pubDate>
       
-      <guid>https://lzhan0121.github.io/2020/04/02/c%E8%AF%AD%E8%A8%80%E6%8A%95%E7%A5%A8%E7%B3%BB%E7%BB%9F/</guid>
-      <description>投票系统  使用c语言实现投票并计数小程序 c语言学习之余的小小练习    我的博客即将同步至腾讯云+社区，邀请大家一同入驻：https://cloud.tencent.com/developer/support-plan?invite_code=3hey0a7iwp0ks  </description>
+      <guid>http://lzhan0121.github.io/2020/04/02/C%E8%AF%AD%E8%A8%80%E6%8A%95%E7%A5%A8%E7%B3%BB%E7%BB%9F/</guid>
+      <description>投票系统 使用c语言实现投票并计数小程序 c语言学习之余的小小练习 我的博客即将同步至腾讯云+社区，邀请大</description>
     </item>
     
     <item>
       <title>用c语言的链表完成简易学生管理系统</title>
-      <link>https://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</link>
+      <link>http://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Wed, 01 Apr 2020 13:00:04 +0800</pubDate>
       
-      <guid>https://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
-      <description>学生管理系统  使用c语言动态链表部分的知识，通过不断改变结点的方式，实现简易链表的增删改查。  #include&amp;lt;stdio.h&amp;gt;#include&amp;lt;stdlib.h&amp;gt;#include&amp;lt;malloc.h&amp;gt; #define LEN sizeof(struct Student)  struct Student //定义结构体 { long long num; float score; struct Student *next; }; int n; struct Student *creat(void) //建立链表的函数 { struct Student *head; struct Student *p1, *p2; n = 0; p1 = p2 = (struct Student *)malloc(LEN); //开辟一个新单元  printf(&amp;#34;请输入学生的学号 : &amp;#34;); //输入第一个学生的学号和成绩  scanf(&amp;#34;%lld&amp;#34;,&amp;amp;p1-&amp;gt;num); printf(&amp;#34;请输入该学生的成绩: &amp;#34;); scanf(&amp;#34;%f&amp;#34;,&amp;amp;p1 -&amp;gt; score); head = NULL; while(p1-&amp;gt;num!= 0) { n = n+1; if(n==1)head = p1; else p2-&amp;gt;next = p1; p2 = p1; p1 = (struct Student *)malloc(LEN); //开辟动态存储区，把起始地址赋给p1  printf(&amp;#34;\n请输入学生的学号 : &amp;#34;); //输入其他学生的学号和成绩  scanf(&amp;#34;%lld&amp;#34;,&amp;amp;p1-&amp;gt;num); if(p1 -&amp;gt; num == 0) { system(&amp;#34;cls&amp;#34;); printf(&amp;#34;\t\t\t\t\t\t录入结束！\n\n\n&amp;#34;); printf(&amp;#34;\t\t\t\t----------------欢迎回到学生管理系统----------------&amp;#34;); printf(&amp;#34;\n输入1新建信息\n输入2删除信息\n输入3增加信息\n输入0退出系统\n&amp;#34;); break; } printf(&amp;#34;请输入该学生的成绩: &amp;#34;); scanf(&amp;#34;%f&amp;#34;,&amp;amp;p1 -&amp;gt; score); } p2-&amp;gt;next = NULL; return(head); } void print(struct Student *head) //输出链表的函数 { int i=1; struct Student *p; printf(&amp;#34;\n现在, 系统拥有 %d 条记录: \n&amp;#34;,n); p = head; if(head !</description>
+      <guid>http://lzhan0121.github.io/2020/04/01/%E7%94%A8c%E8%AF%AD%E8%A8%80%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%8C%E6%88%90%E7%AE%80%E6%98%93%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
+      <description>学生管理系统 使用c语言动态链表部分的知识，通过不断改变结点的方式，实现简易链表的增删改查。 #include&amp;lt;stdio.h&amp;gt;#include&amp;lt;stdlib.h&amp;gt;#include&amp;lt;malloc.h&amp;gt; #define LEN sizeof(struct Student)</description>
     </item>
     
     <item>
-      <title>About</title>
-      <link>https://lzhan0121.github.io/about/</link>
-      <pubDate>Tue, 31 Mar 2020 19:12:17 +0800</pubDate>
+      <title>Links</title>
+      <link>http://lzhan0121.github.io/links/</link>
+      <pubDate>Sat, 20 Apr 2019 23:10:44 +0800</pubDate>
       
-      <guid>https://lzhan0121.github.io/about/</guid>
+      <guid>http://lzhan0121.github.io/links/</guid>
+      <description>本页面为 hugo素锦主题 友情链接承载页面。申请友链请加入Hugo&amp;amp;Hexo博客群：80151</description>
+    </item>
+    
+    <item>
+      <title>Archives</title>
+      <link>http://lzhan0121.github.io/archives/</link>
+      <pubDate>Sat, 20 Apr 2019 13:29:27 +0800</pubDate>
+      
+      <guid>http://lzhan0121.github.io/archives/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>2</title>
+      <link>http://lzhan0121.github.io/posts/2/</link>
+      <pubDate>Wed, 13 Mar 2019 23:23:34 +0800</pubDate>
+      
+      <guid>http://lzhan0121.github.io/posts/2/</guid>
+      <description>Hugo是由Go语言实现的静态网站生成器。简单、易用、高效、易扩展、快速部署。对比Hexo，Hugo</description>
     </item>
     
   </channel>
